@@ -1,0 +1,15 @@
+D:\Symptopro\Symptopro.Service\bin\Debug\net8.0\Symptopro.Service.deps.json
+D:\Symptopro\Symptopro.Service\bin\Debug\net8.0\Symptopro.Service.dll
+D:\Symptopro\Symptopro.Service\bin\Debug\net8.0\Symptopro.Service.pdb
+D:\Symptopro\Symptopro.Service\obj\Debug\net8.0\Symptopro.Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\Symptopro\Symptopro.Service\obj\Debug\net8.0\Symptopro.Service.AssemblyInfoInputs.cache
+D:\Symptopro\Symptopro.Service\obj\Debug\net8.0\Symptopro.Service.AssemblyInfo.cs
+D:\Symptopro\Symptopro.Service\obj\Debug\net8.0\Symptopro.Service.csproj.CoreCompileInputs.cache
+D:\Symptopro\Symptopro.Service\obj\Debug\net8.0\Symptopro.Service.dll
+D:\Symptopro\Symptopro.Service\obj\Debug\net8.0\refint\Symptopro.Service.dll
+D:\Symptopro\Symptopro.Service\obj\Debug\net8.0\Symptopro.Service.pdb
+D:\Symptopro\Symptopro.Service\obj\Debug\net8.0\ref\Symptopro.Service.dll
+D:\Symptopro\Symptopro.Service\bin\Debug\net8.0\Symptopro.Core.dll
+D:\Symptopro\Symptopro.Service\bin\Debug\net8.0\Symptopro.Core.pdb
+D:\Symptopro\Symptopro.Service\obj\Debug\net8.0\Symptopro.Service.csproj.AssemblyReference.cache
+D:\Symptopro\Symptopro.Service\obj\Debug\net8.0\Symptopr.7127F843.Up2Date
