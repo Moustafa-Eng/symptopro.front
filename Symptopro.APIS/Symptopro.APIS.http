@@ -1,6 +1,0 @@
-@Symptopro.APIS_HostAddress = http://localhost:5095
-
-GET {{Symptopro.APIS_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

@@ -1,0 +1,79 @@
+<div class="d-flex justify-content-center">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header text-center">
+        <h3>Login</h3>
+      </div>
+      <div class="card-body">
+        <!-- Show loading message while submitting -->
+        <!-- <div *ngIf="isSubmitting" class="alert alert-info">
+          Logging in...
+        </div> -->
+        <!-- Show success or error message -->
+        <!-- <div *ngIf="message" class="alert" [ngClass]="{'alert-success': isSuccess, 'alert-danger': !isSuccess}">
+          {{ message }}
+        </div> -->
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <!-- Email -->
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              formControlName="email"
+            />
+            <div *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)" class="text-danger">
+              <small *ngIf="f['email'].errors?.['required']">Email is required.</small>
+              <small *ngIf="f['email'].errors?.['email']">Invalid email format.</small>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              formControlName="password"
+            />
+            <div *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched)" class="text-danger">
+              <small *ngIf="f['password'].errors?.['required']">Password is required.</small>
+              <small *ngIf="f['password'].errors?.['minlength']">Password must be at least 6 characters long.</small>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="d-grid mb-3">
+            <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid || isSubmitting">
+              <span *ngIf="!isSubmitting">Login</span>
+            </button>
+          </div>
+
+          <!-- Forgot Password Link -->
+          <div class="text-center">
+            <a [routerLink]="['/forgot-password']">Forgot Password?</a>
+          </div>
+
+          <!-- Register Link -->
+          <div class="text-center">
+            <p>Don't have an account? <a [routerLink]="['/register']">Register</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<app-popup-message
+  *ngIf="showPopup"
+  (closed)="onPopupClose()"
+  [isVisible]="showPopup"
+  [message]="message"
+  [type]="popupType"
+></app-popup-message>
+

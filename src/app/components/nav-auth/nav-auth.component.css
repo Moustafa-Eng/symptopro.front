@@ -1,0 +1,17 @@
+.bg-color {
+  background-color: #429BCB;
+}
+
+.color {
+  color: #429BCB;
+}
+
+.px-2 {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+
+.px-2:hover {
+  color: #429BCB;
+}/*# sourceMappingURL=nav-auth.component.css.map */

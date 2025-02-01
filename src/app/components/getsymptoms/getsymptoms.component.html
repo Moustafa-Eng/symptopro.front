@@ -1,0 +1,69 @@
+
+<div class="d-flex justify-content-center">
+    <div class="col-sm-12 col-md-3 col-lg-6">
+      <h2 style="color: #d3e3f3; font-size: 30px; line-height: 1.6;" class="text-center">Select Your Symptoms?</h2>
+      <div class="">
+
+            <!-- Symptoms Search Box -->
+            <div class="mb-3">
+              <input
+                type="text"
+                id="search"
+                class="form-control shadow p-5"
+                placeholder="Search symptoms...(cough, fever, etc.)"
+                [(ngModel)]="searchText"
+                (input)="filterSymptoms()"
+              />
+            </div>
+  
+            <!-- Suggestions -->
+            <div *ngIf="filteredSymptoms.length > 0; else feedback" class="suggestions-list" style="max-height: 200px; overflow-y: scroll;" >
+              <ul class="list-group">
+                <li
+                  *ngFor="let symptom of filteredSymptoms"
+                  class="list-group-item d-flex justify-content-between align-items-center"
+                  (click)="toggleSymptom(symptom)"
+                >
+                  {{ symptom }}
+                  <span
+                    style="cursor: pointer;"
+                    class="badge fs-6"
+                    [class.bg-success]="selectedSymptoms.has(symptom)"
+                    [class.bg-secondary]="!selectedSymptoms.has(symptom)"
+                  >
+                    {{ selectedSymptoms.has(symptom) ? "Selected" : "Select" }}
+                  </span>
+                </li>
+              </ul>
+            </div>
+  
+            <!-- Feedback for Empty or No Matches -->
+            <ng-template #feedback>
+              <p class="text-center text-muted" *ngIf="searchText.trim().length > 0">
+                No matching symptoms found.
+              </p>
+              <p class="text-center text-muted" *ngIf="searchText.trim().length < 3 && searchText.trim().length > 0">
+                Please enter at least 3 characters to search.
+              </p>
+            </ng-template>
+  
+            <!-- Submit Button -->
+            <div class="d-flex justify-content-center mt-3">
+              <button type="submit" class="btn btn-primary" [disabled]="selectedSymptoms.size === 0"(click)="onSubmit()">
+                Predict
+              </button>
+            </div>
+  
+          <!-- Result -->
+          <div *ngIf="result" class="mt-3 text-center">
+            <h3>Result</h3>
+            <h5 class="alert alert-primary">{{ result }}</h5>
+          </div>
+
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
