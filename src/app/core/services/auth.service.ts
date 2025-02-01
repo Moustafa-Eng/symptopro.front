@@ -61,9 +61,12 @@ export class AuthService {
   }
 
   getUserRole(): string {
-    const token = localStorage.getItem('token');
-    if (token) {
-      return this.decodeToken(token)['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+    if(typeof localStorage !== undefined){
+      
+      const token = localStorage.getItem('token');
+      if (token) {
+        return this.decodeToken(token)['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+      }
     }
     return '';
   }
@@ -82,20 +85,34 @@ export class AuthService {
 
   // Store profile image URL
   setProfileImage(imageUrl: string): void {
-
-      return localStorage.setItem('profileImage', imageUrl);
-
+    if(typeof localStorage !== undefined){ 
+      localStorage.setItem('profileImage', imageUrl);
+    }
   }
 
   // Get profile image URL
-  getProfileImage(): string | null {
-    return localStorage.getItem('profileImage') || null;
+  getProfileImage(): string {
+    if(typeof localStorage !== undefined){ 
+      const imagePath = localStorage.getItem('profileImage');
+      if (imagePath) {
+        return imagePath;
+      }
+    }
+    return '';
   }
 
 
   setToken(token: string): void {
       localStorage.setItem('token', token);
   }
-
+  
+  // Get User Id Form Token
+  getUserId(): string{
+      const token = localStorage.getItem('token');
+      if (token) {
+        return this.decodeToken(token)['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
+      }
+      return '';
+  }
 
 }

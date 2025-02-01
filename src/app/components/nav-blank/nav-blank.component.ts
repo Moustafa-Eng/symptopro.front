@@ -1,13 +1,12 @@
 import { Component, PLATFORM_ID } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { environment } from '../../core/environments/environment';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-nav-blank',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink],
   templateUrl: './nav-blank.component.html',
   styleUrl: './nav-blank.component.scss'
 })
@@ -34,6 +33,14 @@ export class NavBlankComponent {
   }
 
   ngOnInit(): void {
+    if(typeof localStorage !== undefined){
+
       this.profileImage = this._authService.getProfileImage();
+    }
+  }
+
+
+  openProfilePage(){
+    this._router.navigate([`/user-profile/${this._authService.getUserId()}`]);
   }
 }

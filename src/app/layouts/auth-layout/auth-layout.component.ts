@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavAuthComponent } from "../../components/nav-auth/nav-auth.component";
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { FooterComponent } from "../../components/footer/footer.component";
-import { SpinnerComponent } from "../../shared/components/spinner/spinner.component";
+
 
 
 @Component({

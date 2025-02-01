@@ -1,0 +1,40 @@
+<div class="mt-5">
+  <app-go-back></app-go-back>
+</div>
+  <!-- Result -->
+<div class="container">
+  <div class="d-flex justify-content-center align-items-center py-3">
+    <div class="col-md-8 col-lg-6">
+      <h2 style="color: #d3e3f3; font-size: 30px; line-height: 1.6;" class="text-center">Prediction Result</h2>
+
+      <div *ngIf="predictionResult" class="mt-3 alert alert-primary">
+        <h3>Disease name:</h3>
+        <h5 class="text-center">{{ predictionResult.disease }}</h5>
+
+        <div *ngIf="predictionResult.description">
+          <h3>Description:</h3>
+          <p class="text-center">{{ predictionResult.description }}</p>
+        </div>
+
+      <div *ngIf="predictionResult.precaution">
+        <h3>Precautions:</h3>
+        <ul class="text-center" style="list-style: none;">
+          <li *ngFor="let item of predictionResult.precaution.split(','); let i = index">
+            {{ i + 1 }}. {{ item.trim() }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Error -->
+      <div *ngIf="errorMessage" class="mt-3 alert alert-danger text-center fw-bold fs-4">
+        {{ errorMessage }}
+      </div>
+
+    <!-- Suggest Doctor -->
+    <div *ngIf="predictionResult" class="mt-3 text-center fw-bold fs-4" (click)="openDoctorSuggestion()">
+      <a class="btn btn-warning">Get appiontment with a doctor</a>
+    </div>
+
+  </div>
+</div>

@@ -3,11 +3,12 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MedicalReportService } from '../../core/services/medical-report.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { GoBackComponent } from "../../shared/components/go-back/go-back.component";
 
 @Component({
   selector: 'app-upload-medical-report',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, GoBackComponent],
   templateUrl: './upload-medical-report.component.html',
   styleUrl: './upload-medical-report.component.scss'
 })

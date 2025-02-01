@@ -7,9 +7,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-auto">
-        <a class="px-2 nav-link" routerLinkActive="active-link" routerLink="home">Home</a>
-        <a class="px-2 nav-link" routerLinkActive="active-link" routerLink="about" fragment="about">About</a>
-        <a class="px-2 nav-link" routerLinkActive="active-link" routerLink="contactus" fragment="contactus">Contact Us</a>
+        <a class="px-2 nav-link" routerLink="home">Home</a>
+        <a class="px-2 nav-link" routerLink="home" fragment="about">About</a>
+        <a class="px-2 nav-link" routerLink="home" fragment="contactus">Contact Us</a>
       </div>
       <!-- <div class="navbar-nav ms-auto  align-items-center d-flex flex-row">
         <a  href=""><i class="fa-regular rounded p-2 me-2 fa-user text-white fw-bold fs-5 bg-color"></i></a>
@@ -21,7 +21,7 @@
       </div>
     </div>
     <!-- User Profile Image -->
-    <div class="position-relative">
+    <div class="position-relative" (click)="openProfilePage()">
       <img [src]="profileImage" class="user-profile-image rounded-circle bg-color"
         alt="User profile">
     </div>

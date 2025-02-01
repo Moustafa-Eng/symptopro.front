@@ -2,43 +2,21 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, NgModel, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PredictionsService } from './../../core/services/predictions.service';
+import { Router } from '@angular/router';
+import { GoBackComponent } from '../../shared/components/go-back/go-back.component';
 
 @Component({
   selector: 'app-getsymptoms',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, FormsModule],
+  imports: [ReactiveFormsModule, CommonModule, FormsModule, GoBackComponent],
   templateUrl: './getsymptoms.component.html',
   styleUrl: './getsymptoms.component.scss'
 })
 export class GetsymptomsComponent {
-  // getsymptomsForm!: FormGroup;
-  // result: string | null = null;
-  // constructor(private fb: FormBuilder, private _predictionsService: PredictionsService) {}
-  //    ngOnInit(): void {
-  //       this.initializeForm();
-  //     }
-    
-  //     initializeForm() {
-  //       this.getsymptomsForm = this.fb.group({
-  //         symptoms: ['', [Validators.required, Validators.minLength(6)]],
-  //       });
-  //     }
-
-    
-  //     onSubmit() {
-  //       if (this.getsymptomsForm.valid) {
-  //         this._predictionsService.getPredictions({symptoms: this.getsymptomsForm.value.symptoms.split(',')}).subscribe((res) => {
-  //           this.result = res.prediction;
-  //         });
-  //       }
-  //     }
-
-  //     get f() {
-  //       return this.getsymptomsForm.controls;
-  //     }
-
   getsymptomsForm!: FormGroup;
   result: string | null = null;
+  description: string  = '';
+  precaution: string  = '';
   searchText: string = '';
   filteredSymptoms: string[] = [];
   selectedSymptoms: Set<string> = new Set();
@@ -82,7 +60,7 @@ export class GetsymptomsComponent {
     'silver_like_dusting', 'small_dents_in_nails', 'inflammatory_nails',
     'blister', 'red_sore_around_nose', 'yellow_crust_ooze'];
 
-  constructor(private fb: FormBuilder, private predictionsService: PredictionsService) {}
+  constructor(private fb: FormBuilder, private predictionsService: PredictionsService, private router: Router) {}
 
   ngOnInit(): void {
     this.initializeForm();
@@ -138,11 +116,10 @@ export class GetsymptomsComponent {
     if (this.selectedSymptoms.size > 0) {
       const binaryArray = this.createBinaryArray([...this.selectedSymptoms]);
       console.log(binaryArray);
-      this.predictionsService.getPredictions({ data: binaryArray }).subscribe((res) => {
-        this.result = res.disease;
-      });
-
+      this.predictionsService.getPredictions({ data: binaryArray });
       this.clearAll();
+      this.router.navigate(['/prediction-result']); // Navigate to the result page
     }
+
   }
 }
