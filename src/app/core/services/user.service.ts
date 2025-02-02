@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Userprofile } from '../interfaces/userprofile';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
+import { UserHistory } from '../interfaces/userHistory';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,8 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUserProfile(userId: string): Observable<Userprofile> {
-    return this.http.get<Userprofile>(`${environment.baseUrl}/users/${userId}`);
+  getUserHistory(userId: string): Observable<UserHistory[]> {
+    return this.http.get<UserHistory[]>(`${environment.baseUrl}/users/${userId}`);
   }
 
   uploadProfileImage(formData:FormData): Observable<any> {

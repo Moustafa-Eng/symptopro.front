@@ -34,13 +34,13 @@ export class NavBlankComponent {
 
   ngOnInit(): void {
     if(typeof localStorage !== undefined){
-
-      this.profileImage = this._authService.getProfileImage();
+      this.profileImage = this._authService.getUserData().imagePath;
     }
   }
 
 
   openProfilePage(){
-    this._router.navigate([`/user-profile/${this._authService.getUserId()}`]);
+    this._router.navigate([`/user-profile/${this._authService.getUserData().id}`]);
+    this.closeNavbar();
   }
 }

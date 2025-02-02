@@ -16,6 +16,7 @@ import { AnalysisResultComponent } from './components/analysis-result/analysis-r
 import { PredictionResultComponent } from './components/prediction-result/prediction-result.component';
 import { SuggestDoctorsComponent } from './components/suggest-doctors/suggest-doctors.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { adminGuard } from './Admin/admin.guard';
 
 export const routes: Routes = [
 
@@ -30,7 +31,7 @@ export const routes: Routes = [
     {path: 'reset-password', component: ResetPasswordComponent},
   ]},
   {path: '', redirectTo: '', pathMatch: 'full'},
-  {path: '', component : BlankLayoutComponent,canActivate: [authGuard], children: [
+  {path: '', component : BlankLayoutComponent,canActivate: [authGuard, !adminGuard], children: [
     {path: 'home', component: HomeComponent},
     {path: 'get-symptoms', component: GetsymptomsComponent},
     {path: 'prediction-result', component: PredictionResultComponent},
@@ -41,7 +42,7 @@ export const routes: Routes = [
 
   {path:'user-profile/:id', component: UserProfileComponent, canActivate: [authGuard]},
 
-  {path: 'admin', loadChildren: () => import('./Admin/admin.route').then(m => m.ADMIN_ROUTES)},
+  {path: 'admin', canActivate: [adminGuard], loadChildren: () => import('./Admin/admin.route').then(m => m.ADMIN_ROUTES)},
 
   {path: '**', component: NotfoundComponent}
 ];

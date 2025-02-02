@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <div class="row">
+    <!-- Users Card -->
+    <div class="col-md-6">
+      <div class="card dashboard-card">
+        <div class="card-body text-center">
+          <h5 class="card-title">Users</h5>
+          <p class="card-count">{{ userCount }}</p>
+          <p class="text-muted">Total Registered Users</p>
+        </div>
+        <!-- View Users Button -->
+        <div class="text-center">
+          <a routerLink="/admin/dashboard/users" class="btn btn-primary">View Users</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Doctors Card -->
+    <div class="col-md-6">
+      <div class="card dashboard-card">
+        <div class="card-body text-center">
+          <h5 class="card-title">Doctors</h5>
+          <p class="card-count">{{ doctorCount }}</p>
+          <p class="text-muted">Total Registered Doctors</p>
+        </div>
+        <!-- View Doctors Button -->
+        <div class="text-center">
+          <a routerLink="/admin/dashboard/doctors" class="btn btn-primary">View Doctors</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -54,6 +54,18 @@
               </div>
             </div>
 
+            <!-- Gender -->
+            <div class="mb-3">
+              <label for="gender" class="form-label">Gender</label>
+              <select id="gender" class="form-select" formControlName="gender">
+                <option value="0">Male</option>
+                <option value="1">Female</option>
+              </select>
+              <div *ngIf="f['gender'].invalid && (f['gender'].dirty || f['gender'].touched)" class="text-danger">
+                <small *ngIf="f['gender'].errors?.['required']">Gender is required.</small>
+              </div>
+            </div>
+
             <!-- Phone Number -->
             <div class="mb-3">
               <label for="phoneNumber" class="form-label">Phone Number</label>
@@ -106,3 +118,9 @@
 
 
 
+  <app-popup-message
+  *ngIf="showPopup"
+  [isVisible]="showPopup"
+  [message]="message"
+  [type]="popupType"
+></app-popup-message>

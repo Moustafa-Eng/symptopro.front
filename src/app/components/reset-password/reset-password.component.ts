@@ -84,7 +84,7 @@ export class ResetPasswordComponent {
         this.resetPasswordForm.reset();
         this.message = 'Password has been reset successfully.';
         this.isSuccess = true;
-        setTimeout(() => this.router.navigate(['/login']), 2000); // Redirect to login after 3 seconds
+        setTimeout(() => this.router.navigate(['/auth/login']), 2000); // Redirect to login after 2 seconds
       },
       error: (error) => {
         console.error('Error resetting password:', error);

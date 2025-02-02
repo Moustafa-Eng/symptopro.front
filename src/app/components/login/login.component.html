@@ -54,12 +54,12 @@
 
           <!-- Forgot Password Link -->
           <div class="text-center">
-            <a [routerLink]="['/forgot-password']">Forgot Password?</a>
+            <a [routerLink]="['/auth/forgot-password']">Forgot Password?</a>
           </div>
 
           <!-- Register Link -->
           <div class="text-center">
-            <p>Don't have an account? <a [routerLink]="['/register']">Register</a></p>
+            <p>Don't have an account? <a [routerLink]="['/auth/register']">Register</a></p>
           </div>
         </form>
       </div>
@@ -71,7 +71,6 @@
 
 <app-popup-message
   *ngIf="showPopup"
-  (closed)="onPopupClose()"
   [isVisible]="showPopup"
   [message]="message"
   [type]="popupType"

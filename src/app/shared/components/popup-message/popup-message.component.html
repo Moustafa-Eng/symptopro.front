@@ -1,14 +1,7 @@
 <div class="popup-overlay" *ngIf="isVisible">
   <div class="popup-container" [ngClass]="type">
-    <!-- <div class="popup-header">
-      <h4>{{ title }}</h4>
-      <button class="close-btn" (click)="close()">&times;</button>
-    </div> -->
     <div class="popup-body">
       <p>{{ message }}</p>
-    </div>
-    <div class="popup-footer me-auto">
-      <button class="btn btn-primary" (click)="close()">OK</button>
     </div>
   </div>
 </div>

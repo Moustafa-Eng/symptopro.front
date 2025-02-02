@@ -46,7 +46,7 @@ export class EmailconfirmationComponent {
     this.authService.verifyEmailConfirmation(this.confirmationForm.value).subscribe({
       next: () => {
         alert('Email verified successfully!');
-        this.router.navigate(['/login']);
+        this.router.navigate(['/auth/login']);
       },
       error: (err) => {
         console.error(err);

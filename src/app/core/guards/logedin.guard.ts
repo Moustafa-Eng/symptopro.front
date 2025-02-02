@@ -9,9 +9,15 @@ export const logedinGuard: CanActivateFn = (route, state) => {
   const _router = inject(Router);
   const platformId = inject(PLATFORM_ID);
 
+  if (isPlatformBrowser(platformId)) {
+    
   if (authService.isLoggedIn()) {
     _router.navigate(['/home']);
     return false;
   }
+
+  }
   return true;
+
+
 };

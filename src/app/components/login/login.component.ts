@@ -50,29 +50,24 @@ export class LoginComponent {
 
     this.authService.login(this.loginForm.value).subscribe({
       next: (response) => {
-        console.log(response);
+        this.message = response.message || 'Login successfully.';
         this.showSuccessPopup();
-        this.authService.setCurrentUserData(response);
-        const user = this.authService.decodeToken(response.token);
-        const userRole = user['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
-        this.authService.setToken(response.token);
-        this.authService.setProfileImage(response.imagePath);
-        this.isSuccess = true;
-        if(userRole === UserRole.ADMIN) {
+        this.authService.setUserData(response);
+        setTimeout(() => {
+          if(this.authService.getUserData().role === UserRole.ADMIN) {
           this.router.navigate(['/admin']);
         } else {
-          setTimeout(() => {
-            this.isSubmitting = false;
-            this.router.navigate(['/home']);
-          
-          }, 2000); // Redirect after 2 seconds
+          this.router.navigate(['/home']);
         }
+        },1500);
+        
+        this.isSubmitting = false;
       },
       error: (error) => {
-        this.showErrorPopup();
         this.isSubmitting = false;
         this.message = error.error?.message || 'Login failed. Please try again.';
-        this.isSuccess = false;
+        this.showErrorPopup();
+        setTimeout(() => this.showPopup = false, 1500);
       }
     });
   }
@@ -81,22 +76,19 @@ export class LoginComponent {
 
    // Show a success pop-up
    showSuccessPopup(): void {
-     this.showPopup = true;
-    this.message = 'Login successfully.';
+    this.showPopup = true;
+    //this.message = 'Login successfully.';
     this.isSuccess = true;
     this.popupType = 'success';
   }
 
   // Show an error pop-up
   showErrorPopup(): void {
-    this.message = 'Something went wrong. Please try again.';
+    //this.message = 'Something went wrong. Please try again.';
     this.isSuccess = false;
     this.showPopup = true;    
     this.popupType = 'error';
   }
 
 
-  onPopupClose(){
-    this.showPopup = false;
-  }
 }

@@ -2,24 +2,24 @@
   <div class="mt-5">
     <app-go-back></app-go-back>
   </div>
-  <div *ngIf="userProfile; else loading" class="container mt-5">
+  <div *ngIf="userData; else loading" class="container mt-5">
     <!-- User Profile Card -->
     <div class="card mb-4 shadow-sm col-md-6 mx-auto alert alert-success">
       <div class="card-body text-center">
-        <img [src]="userProfile.imagePath" alt="User Image" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px;">
+        <img [src]="userData.imagePath" alt="User Image" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px;">
             <!-- Upload Profile Image Link -->
       <a href="javascript:void(0)" (click)="triggerFileInput()" class="d-block mb-3 text-primary text-decoration-none">
         <i class="fas fa-upload"></i> Upload Profile Image
       </a>
           <!-- Hidden File Input -->
           <input #fileInput type="file" accept="image/*" (change)="onFileSelected($event)" style="display: none;" />
-        <h2 class="card-title">{{ userProfile.fullName.toUpperCase() }}</h2>
-        <p class="card-text text-muted">{{ userProfile.email }}</p>
+        <h2 class="card-title">{{ userData.fullName.toUpperCase() }}</h2>
+        <p class="card-text text-muted">{{ userData.email }}</p>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><strong>Username:</strong> {{ userProfile.userName }}</li>
-          <li class="list-group-item"><strong>Date of Birth:</strong> {{ userProfile.dateOfBirth | date: 'mediumDate' }}</li>
-          <li class="list-group-item"><strong>Gender:</strong> {{ getGenderString(+userProfile.gender) }}</li>
-          <li class="list-group-item"><strong>Phone Number:</strong> {{ userProfile.phoneNumber }}</li>
+          <li class="list-group-item"><strong>Username:</strong> {{ userData.userName }}</li>
+          <li class="list-group-item"><strong>Date of Birth:</strong> {{ userData.dateOfBirth | date: 'mediumDate' }}</li>
+          <li class="list-group-item"><strong>Gender:</strong> {{ getGenderString(+userData.gender) }}</li>
+          <li class="list-group-item"><strong>Phone Number:</strong> {{ userData.phoneNumber }}</li>
         </ul>
       </div>
     </div>
@@ -27,7 +27,7 @@
     <!-- User History Table -->
     <div class="card shadow-sm">
       <div class="card-body">
-        <h3 class="card-title">History of {{userProfile.fullName.toUpperCase()}}</h3>
+        <h3 class="card-title">History of {{userData.fullName.toUpperCase()}}</h3>
         <div class="table-responsive">
           <table class="table table-bordered table-hover">
             <thead class="table-dark">
@@ -39,7 +39,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let history of userProfile.userHistory">
+              <tr *ngFor="let history of userHistory">
                 <td>{{ history.action }}</td>
                 <td>{{ history.actionDate | date: 'medium' }}</td>
                 <td>{{ history.predictionResult || '------------' }}</td>

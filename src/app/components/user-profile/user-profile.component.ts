@@ -1,12 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
 import { UserService } from '../../core/services/user.service';
 import { ActivatedRoute } from '@angular/router';
-import { Userprofile } from '../../core/interfaces/userprofile';
+import { UserHistory } from '../../core/interfaces/userHistory';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../core/services/auth.service';
 import { Gender } from '../../core/Enums/gender';
 import { FooterComponent } from "../footer/footer.component";
 import { GoBackComponent } from "../../shared/components/go-back/go-back.component";
+import { UserData } from '../../core/interfaces/user-data';
 
 @Component({
   selector: 'app-user-profile',
@@ -17,15 +18,17 @@ import { GoBackComponent } from "../../shared/components/go-back/go-back.compone
 })
 export class UserProfileComponent {
   @ViewChild('fileInput') fileInput: any; // Reference to the file input element
-  userProfile!:Userprofile;
+  userData!:UserData;
+  userHistory!:UserHistory[];
 
   constructor(private userService: UserService, private activatedRoute:ActivatedRoute, private authService:AuthService) { }
   ngOnInit() {
+    this.userData = this.authService.getUserData();
+    // Get User History
     this.activatedRoute.params.subscribe(params => {
       const userId = params['id'];
-      this.userService.getUserProfile(userId).subscribe(userProfile => {
-        this.userProfile = userProfile;
-        this.userProfile.imagePath = this.authService.getProfileImage();
+      this.userService.getUserHistory(userId).subscribe(userHistory => {
+        this.userHistory = userHistory;
       });
     });
   }
@@ -64,11 +67,8 @@ export class UserProfileComponent {
       (response) => {
         console.log('Profile image uploaded successfully:', response);
         // Update the user profile image path
-        if (this.userProfile) {
-          this.authService.setProfileImage(response.imagePath); // Assuming the backend returns the new image URL
-          this.userProfile.imagePath = this.authService.getProfileImage();
-
-          console.log(this.userProfile.imagePath);
+        if (this.userData) {
+          this.userData.imagePath = this.authService.getUserData().imagePath;
         }
       },
       (error) => {
