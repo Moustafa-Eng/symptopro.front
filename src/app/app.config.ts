@@ -8,5 +8,5 @@ import { headersInterceptor } from './core/interceptors/headers.interceptor';
 import { httpSpinnerInterceptor } from './shared/interceptors/http-spinner.interceptor';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes,  withHashLocation()), provideClientHydration(), provideHttpClient(withFetch(), withInterceptors([headersInterceptor, httpSpinnerInterceptor]))],
+  providers: [provideRouter(routes,  withHashLocation()), provideClientHydration(), provideHttpClient(withFetch(), withInterceptors([headersInterceptor]))],
 };

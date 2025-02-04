@@ -21,7 +21,6 @@ export class LoginComponent {
   popupType: 'success' | 'error' | 'info' = 'info';
   message: string = '';
 
-
   isSubmitting = false;
   loginForm: FormGroup;
   isSuccess: boolean = false;
@@ -36,6 +35,7 @@ export class LoginComponent {
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
+
 
   // Helper method for easy access to form controls in the template
   get f() {
@@ -59,7 +59,7 @@ export class LoginComponent {
         } else {
           this.router.navigate(['/home']);
         }
-        },1500);
+        },1000);
         
         this.isSubmitting = false;
       },

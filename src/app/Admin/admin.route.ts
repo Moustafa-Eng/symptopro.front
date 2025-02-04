@@ -12,13 +12,12 @@ export const ADMIN_ROUTES: Routes = [
       import('./components/admin-dashboard/admin-dashboard.component').then(
         (m) => m.AdminDashboardComponent
       ),
-    canActivate: [adminGuard], children: [
-      {path: 'overview', component: OverviewComponent},
-      {path: 'users', component: UserManagementComponent},
-      {path: 'doctors', component: DoctorManagementComponent},
-      {path: '', redirectTo: 'overview', pathMatch: 'full'},
+    children: [
+      { path: 'overview', component: OverviewComponent },
+      { path: 'users', component: UserManagementComponent },
+      { path: 'doctors', component: DoctorManagementComponent },
+      { path: '', redirectTo: 'overview', pathMatch: 'full' },
     ]
   },
-  
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
 ];

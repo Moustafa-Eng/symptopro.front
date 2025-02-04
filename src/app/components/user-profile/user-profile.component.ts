@@ -68,7 +68,8 @@ export class UserProfileComponent {
         console.log('Profile image uploaded successfully:', response);
         // Update the user profile image path
         if (this.userData) {
-          this.userData.imagePath = this.authService.getUserData().imagePath;
+          this.userData.imagePath = response.imagePath;
+          this.authService.setUserData(this.userData);
         }
       },
       (error) => {

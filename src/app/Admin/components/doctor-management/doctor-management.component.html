@@ -12,6 +12,7 @@
             <th>Specialty</th>
             <th>Email</th>
             <th>Phone Number</th>
+            <th>Address</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -21,9 +22,10 @@
             <td>{{ doctor.specialty }}</td>
             <td>{{ doctor.email }}</td>
             <td>{{ doctor.phone }}</td>
+            <td>{{ doctor.address }}</td>
+            <!-- Edit Button -->
             <td>
-              <!-- Edit Button -->
-              <button class="btn btn-primary btn-sm m-1" (click)="onEdit(doctor.id)">
+              <button class="btn btn-primary btn-sm m-1" (click)="showEditDoctorPopup(doctor.id)">
                 <i class="fas fa-edit"></i>
               </button>
               <!-- Delete Button -->
@@ -37,8 +39,28 @@
     </div>
   </div>
   <!-- Plus Sign Button -->
-  <button class="btn btn-primary btn-lg rounded-circle position-absolute top-0 end-0 m-2" (click)="onAddDoctor()">
+  <button class="btn btn-primary btn-lg rounded-circle position-absolute top-0 end-0 m-2" (click)="showDoctorPopup()">
     <i class="fas fa-plus"></i>
   </button>
 </div>
 
+
+<app-add-doctor
+*ngIf="showAddDoctor"
+(addDoctorEvent)="addDoctor($event)"
+(cancelEvent)="onCancel()"
+></app-add-doctor>
+
+
+<app-edit-doctor
+*ngIf="showEditDoctor"
+[doctor]="selectedDoctor"
+(editDoctorEvent)="onEdit($event)"
+(cancelEvent)="onCancel()"
+></app-edit-doctor>
+
+<app-popup-message
+[message]="message"
+[isVisible]="showPopup"
+[type]="popupType"
+></app-popup-message>

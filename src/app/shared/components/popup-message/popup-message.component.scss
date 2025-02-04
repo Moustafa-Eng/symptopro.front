@@ -22,62 +22,38 @@
   animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Pop-up Header */
-.popup-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  border-bottom: 1px solid #ddd;
-}
 
-.popup-header h4 {
-  margin: 0;
-  font-size: 1.25rem;
-}
 
-.close-btn {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #666;
-}
 
-.close-btn:hover {
-  color: #000;
-}
+
+
+
 
 /* Pop-up Body */
 .popup-body {
-  padding: 15px;
+  padding: 30px;
 }
 
 .popup-body p {
   text-align: center;
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: #333;
 }
 
-/* Pop-up Footer */
-.popup-footer {
-  padding: 15px;
-  border-top: 1px solid #ddd;
-  text-align: center;
-}
+
 
 /* Pop-up Types */
 .popup-container.success {
-  border-left: 5px solid #28a745;
+  border-left: 10px solid #28a745;
 }
 
 .popup-container.error {
-  border-left: 5px solid #dc3545;
+  border-left: 10px solid #dc3545;
 }
 
 .popup-container.info {
-  border-left: 5px solid #17a2b8;
+  border-left: 10px solid #17a2b8;
 }
 
 /* Animation */

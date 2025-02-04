@@ -33,7 +33,7 @@ export class AuthService {
 
   removeToken(): void {
     localStorage.removeItem('token');
-    localStorage.removeItem('profileImage'); // Remove image on logout
+    localStorage.removeItem('imagePath'); // Remove image on logout
     localStorage.removeItem('id');
     localStorage.removeItem('role');
     localStorage.removeItem('fullName');
