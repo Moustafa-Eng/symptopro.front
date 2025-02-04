@@ -51,7 +51,8 @@ export class DoctorManagementComponent {
     this.adminService.deleteDoctor(doctorId).subscribe({
       next: res => {
         this.message = res.message || 'Doctor deleted successfully.';
-        this.doctors.pop();
+        // Remove the deleted doctor from the list
+        this.doctors = this.doctors.filter(d => d.id !== doctorId);
         this.showSuccessPopup();
         setTimeout(() => {this.showPopup = false;}, 2000);
       },
