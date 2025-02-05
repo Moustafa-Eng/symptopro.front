@@ -6,7 +6,7 @@
     <!-- User Profile Card -->
     <div class="card mb-4 shadow-sm col-md-6 mx-auto alert alert-success">
       <div class="card-body text-center">
-        <img [src]="userData.imagePath" alt="User Image" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px;">
+        <img [src]="userData.imagePath && userData.imagePath !== '' ? userData.imagePath : './../../../assets/images/man.jpg'" alt="User Image" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px;">
             <!-- Upload Profile Image Link -->
       <a href="javascript:void(0)" (click)="triggerFileInput()" class="d-block mb-3 text-primary text-decoration-none">
         <i class="fas fa-upload"></i> Upload Profile Image

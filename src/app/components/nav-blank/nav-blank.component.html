@@ -16,14 +16,13 @@
         <a class="btn btn-outline-light bg-color" (click)="logout()">Logout</a>
       </div> -->
       <div class="navbar-nav ms-auto align-items-center d-flex flex-row">
-        
         <a class="btn btn-outline-light bg-color" (click)="logout()">Logout</a>
       </div>
     </div>
     <!-- User Profile Image -->
     <div class="position-relative" (click)="openProfilePage()">
-      <img [src]="profileImage" class="user-profile-image rounded-circle bg-color"
-        alt="User profile">
+      <img [src]="profileImage && profileImage !== '' ? profileImage : './../../../assets/images/man.jpg'" class="user-profile-image rounded-circle border border-dark"
+        >
     </div>
   </div>
 </nav>
