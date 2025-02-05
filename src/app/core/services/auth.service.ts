@@ -1,10 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, PLATFORM_ID } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { Observable } from 'rxjs';
-import { environment } from '../environments/environment';
+import { environment } from '../../../environments/environment';
 import { UserData } from '../interfaces/user-data';
-import { Gender } from '../Enums/gender';
 @Injectable({
   providedIn: 'root'
 })
