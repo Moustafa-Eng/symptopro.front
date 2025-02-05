@@ -41,7 +41,11 @@ export class RegisterComponent {
       dateOfBirth: ['', Validators.required],
       gender: ['', Validators.required],
       phoneNumber: ['', [Validators.required, Validators.pattern('^\\+?[0-9]{10,15}$')]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['',  [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
+      ]],
     });
   }
 

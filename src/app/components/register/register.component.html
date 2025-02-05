@@ -58,8 +58,8 @@
             <div class="mb-3">
               <label for="gender" class="form-label">Gender</label>
               <select id="gender" class="form-select" formControlName="gender">
-                <option value="0">Male</option>
-                <option value="1">Female</option>
+                <option value="1">Male</option>
+                <option value="2">Female</option>
               </select>
               <div *ngIf="f['gender'].invalid && (f['gender'].dirty || f['gender'].touched)" class="text-danger">
                 <small *ngIf="f['gender'].errors?.['required']">Gender is required.</small>
@@ -92,7 +92,7 @@
               />
               <div *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched)" class="text-danger">
                 <small *ngIf="f['password'].errors?.['required']">Password is required.</small>
-                <small *ngIf="f['password'].errors?.['minlength']">Password must be at least 6 characters long.</small>
+                <small *ngIf="f['password'].errors?.['pattern']">Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.</small>
               </div>
             </div>
 
