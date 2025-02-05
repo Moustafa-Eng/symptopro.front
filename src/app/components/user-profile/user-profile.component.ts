@@ -77,4 +77,13 @@ export class UserProfileComponent {
       }
     );
   }
+
+
+  addHours(dateStr: Date, hours: number): Date {
+    if (!dateStr) return new Date(); // Handle null/undefined case
+    const dateObj = new Date(dateStr); // Convert to Date object
+    dateObj.setHours(dateObj.getHours() + hours); // Add hours
+    return dateObj;
+  }
+  
 }

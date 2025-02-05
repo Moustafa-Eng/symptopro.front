@@ -1,8 +1,7 @@
-import { AuthService } from './core/services/auth.service';
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterOutlet } from '@angular/router';
+import { AuthService } from './core/services/auth.service';
 import { SpinnerComponent } from "./shared/components/spinner/spinner.component";
-import { SpinnerService } from './shared/services/spinner.service';
 
 @Component({
   selector: 'app-root',
@@ -36,11 +35,6 @@ export class AppComponent {
   //   this.showSpinner = loading;
   // });
 }
-
-      @HostListener('window:beforeunload', ['$event'])
-      beforeunloadHandler(event: Event) {
-        this.authService.logout();
-      }
 }
 
 

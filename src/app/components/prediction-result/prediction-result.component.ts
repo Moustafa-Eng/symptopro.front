@@ -21,12 +21,13 @@ export class PredictionResultComponent {
 
 
   ngOnInit() {
-    this.predictionsService.predictionResult$.subscribe((result) => {
-      this.predictionResult = result;
-      if (!result) {
-        this.errorMessage = "Something went wrong. Please try again.";
-      } else {
-        this.errorMessage = "";
+    this.predictionsService.predictionResult$.subscribe({
+      next: (result) => {
+        this.predictionResult = result;
+        this.errorMessage = '';
+      },
+      error: (error) => {
+        this.errorMessage = "Failed to get prediction result. Please try again.";
       }
     });
   }

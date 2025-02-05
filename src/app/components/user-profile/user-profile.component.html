@@ -41,7 +41,7 @@
             <tbody>
               <tr *ngFor="let history of userHistory">
                 <td>{{ history.action }}</td>
-                <td>{{ history.actionDate | date: 'medium' }}</td>
+                <td>{{ addHours(history.actionDate, 2) | date: 'medium' }}</td> <!-- add 2 Hours due to UTC -->
                 <td>{{ history.predictionResult || '------------' }}</td>
                 <td>{{ history.analysisResult || '------------' }}</td>
               </tr>
