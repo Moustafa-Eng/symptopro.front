@@ -10,8 +10,13 @@ import { Component } from '@angular/core';
 })
 export class AboutComponent {
   teamMembers = [
-    { name: 'John Doe', role: 'CEO', bio: 'Healthcare visionary with 15+ years experience' },
-    { name: 'Jane Smith', role: 'Lead Doctor', bio: 'Board-certified physician in internal medicine' },
-    { name: 'Mike Johnson', role: 'Tech Lead', bio: 'Healthcare technology expert' }
+    { name: 'Mustafa', role: 'Full Stack Developer', bio : 'mustafakhaledmah@gmail.com' },
+    { name: 'Ziad', role: 'front-end developer' },
+    { name: 'Andre ', role: 'Team Lead' },
+    { name: 'Nourhan', role: 'front-end developer' },
+    { name: 'Fady', role: 'Ai/Ml Developer' },
+    { name: 'Mohammed', role: 'Database designer' },
+    { name: 'Omer', role: 'UI&UX Designer' }
+
   ];
 }
