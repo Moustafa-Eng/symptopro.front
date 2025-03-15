@@ -24,11 +24,17 @@ export class UserProfileComponent {
   constructor(private userService: UserService, private activatedRoute:ActivatedRoute, private authService:AuthService) { }
   ngOnInit() {
     this.userData = this.authService.getUserData();
+  
     // Get User History
     this.activatedRoute.params.subscribe(params => {
       const userId = params['id'];
       this.userService.getUserHistory(userId).subscribe(userHistory => {
-        this.userHistory = userHistory;
+        this.userHistory = userHistory
+          .map(history => ({
+            ...history,
+            actionDate: new Date(history.actionDate) // Convert to Date object
+          }))
+          .sort((a, b) => b.actionDate.getTime() - a.actionDate.getTime()); // Sort descending
       });
     });
   }

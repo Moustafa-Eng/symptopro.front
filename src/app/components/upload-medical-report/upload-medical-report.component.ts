@@ -31,8 +31,8 @@ export class UploadMedicalReportComponent {
     });
   }
 
-  isPdfFile(file: File): boolean {
-    return file.type === 'application/pdf';
+  isPngFile(file: File): boolean {
+    return file.type === 'image/png';
   }
   // Handle file selection
   onFileChange(event: any): void {

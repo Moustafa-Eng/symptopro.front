@@ -17,7 +17,7 @@
                 type="file" 
                 class="form-control" 
                 (change)="onFileChange($event)" 
-                accept=".pdf"
+                accept=".png"
               >
               <div *ngIf="submitted && !file" class="text-danger small mt-1 text-center">
                 Please select a file
@@ -25,14 +25,14 @@
               <div *ngIf="file && file.size > maxFileSize" class="text-danger small mt-1 text-center">
                 File size must be less than 5MB
               </div>
-              <div *ngIf="file && !isPdfFile(file)" class="text-danger small mt-1 text-center">
-                Only PDF files are allowed
+              <div *ngIf="file && !isPngFile(file)" class="text-danger small mt-1 text-center">
+                Only Png files are allowed
               </div>
             </div>
 
             <!-- Submit Button -->
             <div class="d-grid">
-              <button type="submit" class="btn btn-primary btn-lg" [disabled]="!file || !isPdfFile(file)">
+              <button type="submit" class="btn btn-primary btn-lg" [disabled]="!file || !isPngFile(file)">
                 Upload Report
               </button>
             </div>
