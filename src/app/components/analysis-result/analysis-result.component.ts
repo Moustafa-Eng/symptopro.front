@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MedicalReportService } from '../../core/services/medical-report.service';
 import { AnalysisCbcResult } from '../../core/interfaces/analysis-result';
+import { GoBackComponent } from "../../shared/components/go-back/go-back.component";
 
 @Component({
   selector: 'app-analysis-result',
   standalone: true,
-  imports: [],
+  imports: [GoBackComponent],
   templateUrl: './analysis-result.component.html',
   styleUrl: './analysis-result.component.scss'
 })

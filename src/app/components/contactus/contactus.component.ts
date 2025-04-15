@@ -1,34 +1,40 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-
+import { trigger, transition, style, animate } from '@angular/animations';
 @Component({
   selector: 'app-contactus',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule],
   templateUrl: './contactus.component.html',
-  styleUrl: './contactus.component.scss'
+  styleUrl: './contactus.component.scss',
+  animations: [
+    trigger('fadeInUp', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(20px)' }),
+        animate('500ms ease-out', style({ opacity: 1, transform: 'translateY(0)' })),
+      ]),
+    ]),
+  ],
 })
 export class ContactusComponent {
-  contactForm: FormGroup;
-  submitted = false;
-
-  constructor(private fb: FormBuilder) {
-    this.contactForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.pattern('^[0-9]{10}$')],
-      message: ['', [Validators.required, Validators.minLength(10)]]
-    });
-  }
-
-  onSubmit() {
-    this.submitted = true;
-    if (this.contactForm.valid) {
-      console.log('Form Submitted', this.contactForm.value);
-      // Add your API call here
-      this.contactForm.reset();
-      this.submitted = false;
-    }
-  }
+  technologyFeatures = [
+    {
+      title: 'AI-Powered Diagnosis',
+      icon: 'fa-solid fa-robot',
+      color: 'info',
+      description: 'Machine learning algorithms predict illnesses based on user-entered symptoms with high accuracy.',
+    },
+    {
+      title: 'Medical Report Analysis',
+      icon: 'bi bi-file-medical',
+      color: 'warning',
+      description: 'Upload and analyze lab reports using NLP to highlight abnormalities clearly and effectively.',
+    },
+    {
+      title: 'Smart Doctor Suggestions',
+      icon: 'bi bi-person-check',
+      color: 'success',
+      description: 'We recommend doctors based on your case, medical history, and location — personalized for you.',
+    },
+  ];
 }

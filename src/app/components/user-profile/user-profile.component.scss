@@ -15,3 +15,15 @@
 .table-hover tbody tr:hover {
   background-color: #f8f9fa;
 }
+
+.bkg {
+  background: linear-gradient(
+      rgba(53, 56, 59, 0.721),
+      rgba(1, 30, 72, 0.768)
+    ),
+    url('../../../assets/images/undraw_my-password_iyga.svg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+}

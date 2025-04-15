@@ -8,11 +8,13 @@ import { Gender } from '../../core/Enums/gender';
 import { FooterComponent } from "../footer/footer.component";
 import { GoBackComponent } from "../../shared/components/go-back/go-back.component";
 import { UserData } from '../../core/interfaces/user-data';
+import { NavAuthComponent } from "../nav-auth/nav-auth.component";
+import { NavBlankComponent } from "../nav-blank/nav-blank.component";
 
 @Component({
   selector: 'app-user-profile',
   standalone: true,
-  imports: [CommonModule, FooterComponent, GoBackComponent],
+  imports: [CommonModule, FooterComponent, GoBackComponent, NavAuthComponent, NavBlankComponent],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss'
 })
